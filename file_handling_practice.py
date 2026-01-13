@@ -98,7 +98,6 @@ processed_data['students_performance_data'].append(
 with open('students_data.json','w') as f:
     js.dump(processed_data,f)
 
-
 # Task 3
 
 orders = [
@@ -108,12 +107,12 @@ orders = [
     {"order_id": 4, "amount": 500, "status": "cancelled"}
 ]
 
-
 def get_total_revenue(orders):
     total_revenue=0
 
     for order in orders:
-        total_revenue+=order['amount']
+        if order['status'] == "completed":
+            total_revenue+=order['amount']
 
     return total_revenue
 
@@ -166,36 +165,80 @@ print(main(orders))
 
 # Task 4
 
-with open('data.log','r') as f:
-    log_data=f.readlines()
+def get_data():
+    with open('data.log','r') as f:
+        log_data=f.readlines()
 
-info_count=0
-error_count=0
+    return log_data
 
-for line in log_data:
-    if line.startswith("INFO"):
-        info_count+=1
-    elif line.startswith("ERROR"):
-        error_count+=1
 
-with open('log_summary.txt','w') as f:
-    f.write(f'Info messages {info_count}\nError messages {error_count}')
+def count_type_of_messages(log_data):
+    info_count=0
+    error_count=0
+
+    for line in log_data:
+        if line.startswith("INFO"):
+            info_count+=1
+        elif line.startswith("ERROR"):
+            error_count+=1
+
+    return info_count,error_count
+
+
+def write_data_to_file(info_count,error_count):
+    with open('log_summary.txt','w') as f:
+        f.write(f'Info messages {info_count}\nError messages {error_count}')
+
+
+def main():
+    file_data=get_data()
+    info_count,error_count=count_type_of_messages(file_data)
+    write_data_to_file(info_count,error_count)
+    return "Summary successfully written to the file"
+
+
+main()
 
 
 # Task 5
 
-with open('input.log','r') as f:
-    file_data=f.readlines()
+def get_file():
+    while True:
+        file_name=input("Enter the file name : ").strip()
+        try:
+            with open(file_name,'r') as f:
+                file_data=f.readlines()
+            break
+        except FileNotFoundError:
+            print("File doesn't exist please try again ")
 
-lines_count=len(file_data)
-words_count=0
-characters_count=0
+    return file_data
 
-for line in file_data:
-    words_count+=len(line.split(" "))
-    for ch in line:
-        characters_count+=1
 
-print(f'Lines count : {lines_count}')
-print(f'words count : {words_count}')
-print(f'characters count : {characters_count}')
+def analyze_file_contents(file_data):
+    lines_count=len(file_data)
+    words_count=0
+    characters_count=0
+
+    for line in file_data:
+        words_count+=len(line.split())
+        for ch in line:
+            characters_count+=1
+
+    return lines_count,words_count,characters_count
+
+
+def print_data(lines_count,words_count,characters_count):
+    print(f'Lines count : {lines_count}')
+    print(f'words count : {words_count}')
+    print(f'characters count : {characters_count}')
+
+
+def main():
+    file_data=get_file()
+    lines_count,words_count,characters_count=analyze_file_contents(file_data)
+    print_data(lines_count,words_count,characters_count)
+
+
+if __name__=="__main__":
+    main()
