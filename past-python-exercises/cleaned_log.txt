@@ -1,0 +1,19 @@
+[INFO] System started
+
+[WARNING] Low disk space
+
+[ERROR] Cannot connect to server
+
+[INFO] User login successful
+
+[ERROR] File not found
+
+[INFO] Scheduled backup completed
+
+[WARNING] High memory usage
+
+[INFO] User logout successful
+
+[ERROR] Failed to write to disk
+
+[WARNING] CPU temperature high

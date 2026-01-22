@@ -1,0 +1,14 @@
+[INFO] System started
+
+[INFO] System started
+
+[INFO] User login successful
+
+[INFO] Scheduled backup completed
+
+[INFO] User logout successful
+
+[INFO] Scheduled backup completed
+
+[INFO] System started
+

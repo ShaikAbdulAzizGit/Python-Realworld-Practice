@@ -1,0 +1,11 @@
+✅ Task 1: Remove Duplicates from Input
+You used set() to eliminate duplicates and then converted it back to a list—perfectly done.
+✔️ Good handling of dynamic input.
+Optional Tip: To preserve input order (useful in real-world data cleaning), consider using dict.fromkeys() or collections.OrderedDict:
+
+python
+Copy
+Edit
+cleaned_data = list(dict.fromkeys(input_data))
+
+

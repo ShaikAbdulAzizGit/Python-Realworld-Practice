@@ -1,0 +1,12 @@
+# from sklearn.preprocessing import OrdinalEncoder  # Uncomment if you prefer ordinal
+# 1. Load the data
+# 2. Create a stratified test set based on income category
+# Work on a copy of training data
+# 3. Separate predictors and labels
+# 4. Separate numerical and categorical columns
+# 5. Pipelines
+# Numerical pipeline
+# Categorical pipeline
+# Full pipeline
+# 6. Transform the data
+# housing_prepared is now a NumPy array ready for training

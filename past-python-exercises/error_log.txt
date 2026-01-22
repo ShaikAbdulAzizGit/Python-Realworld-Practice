@@ -1,0 +1,8 @@
+[ERROR] Cannot connect to server
+
+[ERROR] File not found
+
+[ERROR] Cannot connect to server
+
+[ERROR] Failed to write to disk
+
